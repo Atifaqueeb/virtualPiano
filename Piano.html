@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Piano</title>
+  <link rel="shortcut icon" href="#">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #4a4a4a;
+  }
+
+  .container {
+    height: 96vh;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .white-keys>kbd {
+    background-color: white;
+    height: 200px;
+    width: 45px;
+    margin-right: 0px;
+    padding-left: 0;
+    border: 2px solid slategrey;
+    display: inline-flex;
+    padding-bottom: 40px;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1;
+  }
+  #hide{
+    visibility: hidden;
+  }
+  .black-keys>kbd{
+    overflow: hidden;
+    margin: 4px;
+    background-color: black;
+    color: whitesmoke;
+    display: inline-block;
+    height: 120px;
+    width: 40px;
+    border: 2px solid slategrey ;
+    padding-top: 80px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    z-index: 2;
+  }
+  kbd.first{
+    position: relative;
+    top: -38px;
+    left: -320px;
+  }
+  kbd.next{
+    position: relative;
+    top: -38px;
+    left: -275px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="white-keys">
+      <kbd>A</kbd>
+      <kbd>S</kbd>
+      <kbd>D</kbd>
+      <kbd>F</kbd>
+      <kbd>G</kbd>
+      <kbd>H</kbd>
+      <kbd>J</kbd>
+    </div>
+    <div class="black-keys">
+      <kbd class="first">W</kbd>
+      <kbd class="first">E</kbd>
+      <kbd class="next">T</kbd>
+      <kbd class="next">Y</kbd>
+      <kbd class="next">U</kbd>
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (e) => {
+
+      document.addEventListener('keydown', (event) => {
+        let audio = new Audio(`audio/${event.key}.mp3`);
+        let up = event.key.toUpperCase()
+        switch (event.key) {
+          case 'A':
+          case 'S':
+          case 'D':
+          case 'E':
+          case 'F':
+          case 'G':
+          case 'H':
+          case 'J':
+          case 'W':
+          case 'E':
+          case 'T':
+          case 'Y':
+          case 'U':
+            console.log(`The ${event.key} is pressed `);
+            audio.play();
+            break;
+          default:
+            console.warn('Error')
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
